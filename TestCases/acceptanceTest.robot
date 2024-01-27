@@ -16,6 +16,7 @@ ${Contact_Role}    id=role
 ${CreateBtn_MainPage}    id=create
 ${CreateForm_Text}    Create New Capstone Entry
 @{Capstone_Entry}    Tan KK    Quantum Mechanics    Staff    4    KK Company    3    Tan BB    Write Here
+&{Capstone_Dict}    name=Tan KK    title=Quantum Mechanics    role=Staff    NumOfStd=4    company=KK Company    year=3    POC=Tan BB    des=write here
 
 *** Test Cases ***
 Administrator Login with valid Credentials
@@ -29,10 +30,14 @@ Creation of Capstone Record as Administrator
     Click Button    ${CreateBtn_MainPage}    #this clicks on the create button
     ${login_form_visible}=    Run Keyword And Return    Element Should Be Visible    id=capstone-form    #this might id might change
     Should Be True    ${login_form_visible}
-    # FOR    ${field}    IN    
-    #     Log    ${field}
+    FOR    ${key}    ${value}    IN    &{Capstone_Dict.items()}
+        Input Text    id=${key}    ${value}
         
-    # END
+    END
+    Click Button    id=submit
+    Handle Alert    ACCEPT
+    Alert Should Be Present    successfully created
+    
 
 
 *** Keywords ***
