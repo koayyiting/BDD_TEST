@@ -2,27 +2,45 @@
 Library    SeleniumLibrary
 
 *** Variables ***
-${URL}    http://localhost:8080
+${URL}    http://localhost:8080    #this might have to change
 ${Broswer}    Chrome
-${ValidAdminUserName}    Admin1
-${ValidAdminPwd}    Admin123    
-${Login_Button}    id=login-button
-${username_textbox}    id=username-textbox
-${pwd_textbox}    id=pwd-textbox
+${Login_form}    id=loginForm
+${ValidAdminUserName}    Shaniah
+${ValidAdminPwd}    adminpwd1    
+${login_button}    id=login_button
+${username_textbox}    id=login_username
+${pwd_textbox}    id=login_password
+${name_textbox}    id=name
+${Capstone_title}    id=title
+${Contact_Role}    id=role
+${CreateBtn_MainPage}    id=create
+${CreateForm_Text}    Create New Capstone Entry
+@{Capstone_Entry}    Tan KK    Quantum Mechanics    Staff    4    KK Company    3    Tan BB    Write Here
 
 *** Test Cases ***
 Administrator Login with valid Credentials
 
     Login    ${ValidAdminUserName}    ${ValidAdminPwd}
-    Page Should Contain    Hi Administrator
+    Page Should Contain    Admin Main Page
+
+
+Creation of Capstone Record as Administrator
+    Login    ${ValidAdminUserName}    ${ValidAdminPwd}
+    Click Button    ${CreateBtn_MainPage}    #this clicks on the create button
+    ${login_form_visible}=    Run Keyword And Return    Element Should Be Visible    id=capstone-form    #this might id might change
+    Should Be True    ${login_form_visible}
+    # FOR    ${field}    IN    
+    #     Log    ${field}
+        
+    # END
+
 
 *** Keywords ***
 Login
-    [Arguments]    ${Username}    ${Password}
+    [Arguments]    ${username}    ${password}
     Open Browser    ${URL}    ${Broswer}
-    Click Button    ${Login_Button}
     ${login_form_visible}=    Run Keyword And Return    Element Should Be Visible    id=login-form
     Should Be True    ${login_form_visible}
-    Input Text    ${username_textbox}    ${Username}
-    Input Password    ${pwd_textbox}    ${Password}
-    Click Button    ${Login_Button}    #This is might be different from the previous button, change accordingly
+    Input Text    ${username_textbox}    ${username}
+    Input Password    ${pwd_textbox}    ${password}
+    Click Button    ${login_button}    
