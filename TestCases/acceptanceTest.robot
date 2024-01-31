@@ -58,6 +58,7 @@ Delete User Account
 #         Input Text    id=${key}    ${value}
         
 #     END
+    #changes
 #     Click Button    id=submit
 #     Handle Alert    ACCEPT
 #     Alert Should Be Present    successfully created
@@ -73,6 +74,5 @@ Login
     Maximize Browser Window
     Wait Until Element Is Visible    id=loginForm
     Input Text    ${username_textbox}    ${username}
-    Input Password    ${pwd_textbox}    ${password}
     Click Button    ${login_button}   
     Wait Until Page Contains    User Details Page    #to wait for the page title to load
