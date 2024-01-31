@@ -35,7 +35,7 @@ Delete User Account
     [Teardown]    Close Browser
 
 
- Modify User Account
+Modify User Account
     Login    ${ValidAdminUserName}    ${ValidAdminPwd}
     Wait Until Element Is Visible    class=table
     ${modify_button}=    Get WebElements    xpath://button[contains(text(), 'modify')]
