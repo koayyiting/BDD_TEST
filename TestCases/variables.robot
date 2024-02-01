@@ -3,7 +3,9 @@ ${URL}    https://devopsteamb2023.github.io/DevOps_Oct2023_TeamB_Development/acc
 ${Broswer}    Chrome
 ${Login_form}    id=loginForm
 ${ValidAdminUserName}    Shaniah
-${ValidAdminPwd}    adminpwd1    
+${ValidAdminPwd}    adminpwd1   
+${ValidNormalUser}    luke
+${ValidNormalPwd}     LUKEEE
 ${login_button}    id=login_button
 ${username_textbox}    id=login_username
 ${pwd_textbox}    id=login_password
