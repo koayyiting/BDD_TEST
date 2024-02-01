@@ -26,7 +26,8 @@ Sign up
     ${message}=    Handle Alert   
     Should Contain    ${message}    Account request sent
     [Teardown]    Close Browser
-    
+
+
 Delete User Account 
     Login    ${ValidAdminUserName}    ${ValidAdminPwd}
     Wait Until Element Is Visible    class=table
@@ -70,6 +71,17 @@ Modify User Account
     Should Be Equal As Strings    ${prev_value}    ${cur_value}
     Should Be Equal As Strings    ${modifiedUser}    ${cur_name}
     #give alert and check 
+    [Teardown]    Close Browser
+
+
+Approve User Accounts
+    Login    ${ValidAdminUserName}    ${ValidAdminPwd}
+    Wait Until Element Is Visible    class=table
+    #find last appprove button
+    ${approve_button}=    Get WebElements    xpath=//button[contains(text(), 'approve')]
+    ${approve_button}=    Set Variable    ${approve_button[-1]}
+    Mouse Over    ${approve_button}
+    Click Button    ${approve_button}
     [Teardown]    Close Browser
 
 
