@@ -2,6 +2,7 @@
 Library    SeleniumLibrary
 Library    XML
 Library    Collections
+Library    String
 Resource    variables.robot
 
 *** Test Cases ***
@@ -92,10 +93,11 @@ Approve User Accounts
 
 
 #failing test cases
-Administrator login with invalid Credentials
-    Login    ${invalid_admin_username}    ${invalid_admin_password}
+Login with invalid Credentials
+    Login    ${invalid_username}    ${invalid_password}
     Should Contain    id=error-message    Invalid Credentials
     [Teardown]    Close Browser
+
 
 
 Cancel Deletion of User Account
