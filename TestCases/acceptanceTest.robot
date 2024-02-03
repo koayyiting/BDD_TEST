@@ -28,6 +28,12 @@ Sign up
     [Teardown]    Close Browser
 
 
+Normal user login with valid Credentials
+    Login    ${ValidNormalUser}    ${ValidNormalPwd}
+    Title Should Be    User Main Page
+    [Teardown]    Close Browser
+
+
 Delete User Account 
     Login    ${ValidAdminUserName}    ${ValidAdminPwd}
     Wait Until Element Is Visible    class=table
